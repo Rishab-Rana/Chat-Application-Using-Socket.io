@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
     <title>Chat Application</title>
 </head>
 <body>
-    <h1>iChat 🗨️</h1>
+    <h1 class="title">iChat 🗨️</h1>
     <div class="main">
         <div class="name">
             <span><i class="far fa-user"></i></span>
@@ -21,7 +22,7 @@
                 </p>
             </li>
 
-            <li class="message-Right">
+            <li class="message-right">
                 <p class="message">
                     Lorem ipsum 
                     <span>bluebird 🔘 26 July 10:40</span>
@@ -36,14 +37,14 @@
         </ul>
 
         <form class="message-form" id="message-form">
-            <input type="text" name="message" id="message-input" classid="message-input">
+            <input type="text" name="message" id="message-input" class="message-input">
             <div class="v-divider"></div>
             <button type="submit" class="send-button">
                 Send <i class="fas fa-paper-plane"></i>
             </button>
         </form>
 
-        <h3 class="clients-total" id="clients-total">Total Clients : 2</h3>
     </div>
+    <h3 class="clients-total" id="clients-total">Total Clients : 2</h3>
 </body>
 </html>
