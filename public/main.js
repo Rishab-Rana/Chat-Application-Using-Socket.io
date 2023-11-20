@@ -9,6 +9,7 @@ const messageInput = document.getElementById('message-input')
 messageForm.addEventListener('submit',(e)=>{
     e.preventDefault()
     sendMessage()
+    scrollToButtom()
 })
 
 socket.on('clients-total',(data)=>{
@@ -18,7 +19,8 @@ socket.on('clients-total',(data)=>{
 
 function sendMessage ()
 {
-    console.log(messageInput.value)
+    if(messageInput.value === '') return
+    // console.log(messageInput.value)
     const data ={
         name: nameInput.value,
         message: messageInput.value,
@@ -26,8 +28,30 @@ function sendMessage ()
     }
 
     socket.emit('message',data)
+    addMessageToUI(true,data)
+    messageInput.value = ''
 }
 
 socket.on('chat-Message',(data)=>{
-    console.log(data)
+    // console.log(data)
+    addMessageToUI(false,data)
 })
+
+function addMessageToUI(isOwnMessage,data)
+{
+    const element = `<li class="${isOwnMessage ? "message-right" : "message-left"}">
+    <p class="message">
+        ${data.message}
+        <span>${data.name} 🔘 ${moment(data.dateTime).fromNow()}</span>
+    </p>
+</li>`
+
+messageContainer.innerHTML +=element
+scrollToButtom()
+}
+
+
+function scrollToButtom()
+{
+    messageContainer.scrollTo(0,messageContainer.scrollHeight)
+}
